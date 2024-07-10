@@ -3,5 +3,7 @@
   <h2>Thank You for Your Purchase!</h2>
   <p>Your order has been successfully placed.</p>
   <p>Total Price: {{ totalPrice | currency : "EUR" }}</p>
-  <button class="success-btn" routerLink="/products">Continue Shopping</button>
+  <button class="success-btn" (click)="clearCartAndNavigate()">
+    Continue Shopping
+  </button>
 </div>

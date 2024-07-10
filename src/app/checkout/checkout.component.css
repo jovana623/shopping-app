@@ -38,10 +38,25 @@
 .submit {
   margin-top: 20px;
   align-self: flex-end;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.return-btn {
+  border: none;
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 15px;
+  border-radius: 15px;
+}
+
+.return-btn:hover {
+  cursor: pointer;
+  background-color: #007bffc6;
 }
 
 .submit-btn {
-  background-color: transparent;
   border: none;
   background-color: #00a36c;
   color: #fff;
@@ -50,6 +65,7 @@
 }
 
 .submit-btn:hover {
+  cursor: pointer;
   background-color: #2aaa8a;
 }
 
