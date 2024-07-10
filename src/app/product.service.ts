@@ -11,7 +11,7 @@ export class ProductService {
 
   constructor(private http: HttpClient) {}
 
-  getProducts(limit: number, skip: number): Observable<Product[]> {
+  getProducts(limit: number = 5, skip: number = 0): Observable<Product[]> {
     const url = `${this.productsUrl}?limit=${limit}&skip=${skip}`;
     return this.http.get<Product[]>(url);
   }

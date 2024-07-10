@@ -28,17 +28,10 @@ export class CheckoutComponent implements OnInit {
     this.totalPrice = this.cartService.getTotalPrice();
 
     this.checkoutForm = this.form.group({
-      name: [
-        '',
-        [Validators.required, CustomvalidationService.nameValidator()],
-      ],
-      address: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.email]],
-      telephone: [
-        '',
-        Validators.required,
-        CustomvalidationService.telephoneValidator(),
-      ],
+      name: ['', [CustomvalidationService.nameValidator()]],
+      address: [''],
+      email: [''],
+      telephone: ['', CustomvalidationService.telephoneValidator()],
     });
   }
 

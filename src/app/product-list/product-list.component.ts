@@ -16,8 +16,8 @@ export class ProductListComponent implements OnInit {
   filteredProducts: Product[] = [];
   searchQuery: string = '';
   pageSize: number = 5;
-  currentPage: number = 1;
   cartItemCount: number = 0;
+  loading: boolean = false;
 
   constructor(
     private productService: ProductService,
@@ -30,22 +30,27 @@ export class ProductListComponent implements OnInit {
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
       this.searchQuery = params['q'] || '';
-      this.pageSize = +params['limit'] || 5;
-      this.currentPage = +params['page'] || 1;
-      const skip = (this.currentPage - 1) * this.pageSize;
-      this.fetchProducts(this.pageSize, skip);
+      this.pageSize = +params['limit'] || this.pageSize;
+      this.fetchProducts();
     });
+    this.updateCartItemCount();
   }
 
-  fetchProducts(limit: number, skip: number): void {
+  fetchProducts(): void {
+    this.loading = true;
     if (this.searchQuery) {
       this.searchProducts(this.searchQuery);
     } else {
-      this.productService
-        .getProducts(limit, skip)
-        .subscribe((data: Product[]) => {
+      this.productService.getProducts(this.pageSize, 0).subscribe(
+        (data: Product[]) => {
           this.processProducts(data);
-        });
+          this.loading = false;
+        },
+        (error) => {
+          console.error('Error fetching products:', error);
+          this.loading = false;
+        }
+      );
     }
   }
 
@@ -63,26 +68,18 @@ export class ProductListComponent implements OnInit {
     }
   }
 
-  onPageChange(pageNumber: number): void {
-    this.currentPage = pageNumber;
-    const skip = (this.currentPage - 1) * this.pageSize;
-    this.router.navigate([], {
-      relativeTo: this.route,
-      queryParams: { page: this.currentPage, limit: this.pageSize },
-      queryParamsHandling: 'merge',
-    });
-  }
-
-  onPageSizeChange(): void {
-    this.currentPage = 1;
-    const skip = (this.currentPage - 1) * this.pageSize;
-    this.fetchProducts(this.pageSize, skip);
-  }
-
   searchProducts(query: string): void {
-    this.productService.searchProducts(query).subscribe((data: Product[]) => {
-      this.processProducts(data);
-    });
+    this.loading = true;
+    this.productService.searchProducts(query).subscribe(
+      (data: Product[]) => {
+        this.processProducts(data);
+        this.loading = false;
+      },
+      (error) => {
+        console.error('Error searching products:', error);
+        this.loading = false;
+      }
+    );
   }
 
   performSearch(): void {
@@ -94,6 +91,10 @@ export class ProductListComponent implements OnInit {
       queryParams,
       queryParamsHandling: 'merge',
     });
+  }
+
+  onPageSizeChange(): void {
+    this.fetchProducts();
   }
 
   updateCartItemCount() {

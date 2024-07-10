@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { ProductService } from '../product.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SingleProductViewComponent } from '../single-product-view/single-product-view.component';
 import { Product } from '../product';

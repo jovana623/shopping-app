@@ -1,10 +1,10 @@
 <div class="modal-body p-b">
-  <ng-template #spinner>
-    <div class="spinner-border text-primary" role="status">
+  <div *ngIf="loading" class="text-center">
+    <div class="spinner-border" role="status">
       <span class="sr-only">Loading...</span>
     </div>
-  </ng-template>
-  <div class="flex">
+  </div>
+  <div class="flex" *ngIf="!loading">
     <div class="">
       <img [src]="product.images" class="modal-img" alt="Product Image" />
     </div>
@@ -20,7 +20,13 @@
           class="card-rating"
         ></ngb-rating>
       </div>
-      <button (click)="addToCart()" class="add_to_cart">Add to cart</button>
+      <button
+        (click)="addToCart()"
+        class="add_to_cart"
+        [style.background-color]="inCart ? '#ff0000' : '#00a36c'"
+      >
+        {{ inCart ? "Remove from cart" : "Add to cart" }}
+      </button>
     </div>
   </div>
 </div>

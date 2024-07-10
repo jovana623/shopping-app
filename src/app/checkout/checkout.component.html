@@ -50,22 +50,8 @@
           class="form-input"
           required
         />
-        <div
-          *ngIf="
-            checkoutForm.get('email')?.invalid &&
-            (checkoutForm.get('email')?.dirty ||
-              checkoutForm.get('email')?.touched)
-          "
-          class="text-danger"
-        >
-          <div *ngIf="checkoutForm.get('email')?.errors?.['required']">
-            Email is required.
-          </div>
-          <div *ngIf="checkoutForm.get('email')?.errors?.['email']">
-            Invalid email format.
-          </div>
-        </div>
       </div>
+
       <div class="form-item">
         <label for="telephone" class="form-label">Telephone</label>
         <input
@@ -103,10 +89,14 @@
     <div *ngIf="cartItems.length > 0">
       <div *ngFor="let item of cartItems" class="checkout-item">
         <img src="{{ item.thumbnail }}" class="checkout-img" />
-        <h5 class="checkout-title">{{ item.title }}</h5>
-        <p class="checkout-price">
-          {{ item.price * item.quantity | currency : "EUR" }}
-        </p>
+        <div>
+          <h5 class="checkout-title">{{ item.title }}</h5>
+        </div>
+        <div>
+          <p class="checkout-price">
+            {{ item.price * item.quantity | currency : "EUR" }}
+          </p>
+        </div>
 
         <input
           type="number"

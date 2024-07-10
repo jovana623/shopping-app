@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule, NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
-import { ProductListComponent } from './product-list/product-list.component';
+
 import { SingleProductViewComponent } from './single-product-view/single-product-view.component';
 import { CartComponent } from './cart/cart.component';
 import { CheckoutComponent } from './checkout/checkout.component';
@@ -13,6 +13,7 @@ import { ProductCardComponent } from './product-card/product-card.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { ProductListComponent } from './product-list/product-list.component';
 
 @NgModule({
   declarations: [
