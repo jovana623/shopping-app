@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule, NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
-
 import { SingleProductViewComponent } from './single-product-view/single-product-view.component';
 import { CartComponent } from './cart/cart.component';
 import { CheckoutComponent } from './checkout/checkout.component';
