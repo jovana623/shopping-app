@@ -1,0 +1,14 @@
+.cart-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.single-item {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 0.5fr;
+  gap: 5px;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  align-items: center;
+}

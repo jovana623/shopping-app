@@ -1,0 +1,31 @@
+<div class="modal-body">
+  <div *ngFor="let item of cartItems" class="single-item">
+    <p>{{ item.title }}</p>
+    <div class="">
+      <input
+        type="number"
+        min="1"
+        [(ngModel)]="item.quantity"
+        (change)="updateQuantity(item.id, item.quantity)"
+      />
+    </div>
+    <button class="btn btn-danger" (click)="removeFromCart(item.id)">
+      Remove
+    </button>
+  </div>
+  <hr />
+  <div class="row">
+    <div class="col-md-9 text-right">
+      <p>Total:</p>
+    </div>
+    <div class="col-md-3">
+      <p>{{ totalPrice | currency : "EUR" }}</p>
+    </div>
+  </div>
+  <div class="cart-buttons">
+    <button class="btn btn-primary" (click)="clearCart()">Clear Cart</button>
+    <button class="btn btn-success" (click)="navigateToCheckout()">
+      Checkout
+    </button>
+  </div>
+</div>

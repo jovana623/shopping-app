@@ -1,0 +1,42 @@
+<div class="container mt-4">
+  <div class="products-header">
+    <h1 class="logo">UniverMart</h1>
+    <button class="cart-icon" (click)="openCart()">
+      <i class="fas fa-shopping-cart"></i>
+    </button>
+  </div>
+  <div class="list-controls">
+    <select
+      class="page-size"
+      [(ngModel)]="pageSize"
+      (change)="onPageSizeChange()"
+    >
+      <option value="5">5</option>
+      <option value="10">10</option>
+      <option value="20">20</option>
+      <option value="50">50</option>
+    </select>
+
+    <div class="search-container">
+      <input
+        type="text"
+        placeholder="Search products..."
+        [(ngModel)]="searchQuery"
+        (keyup.enter)="performSearch()"
+        class="search-input"
+      />
+      <button type="button" class="search-btn" (click)="performSearch()">
+        <i class="fas fa-search"></i>
+      </button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div
+      class="col-6 col-md-4 col-lg-3 mb-4"
+      *ngFor="let product of filteredProducts"
+    >
+      <app-product-card [product]="product"></app-product-card>
+    </div>
+  </div>
+</div>

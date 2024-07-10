@@ -1,0 +1,75 @@
+.product-grid {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.logo {
+  font-family: "Pacifico", cursive;
+}
+
+.product-grid .col {
+  flex: 0 0 20%;
+  max-width: 20%;
+  display: flex;
+  align-items: stretch;
+}
+
+.products-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.cart-icon {
+  border: none;
+  background-color: transparent;
+  color: blue;
+  font-size: 24px;
+}
+
+.list-controls {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+.page-size {
+  width: 100px;
+  border: none;
+  border-bottom: 1px solid #a9a9a9;
+}
+
+.page-size:focus {
+  outline: none;
+  border-bottom: 1px solid #000;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+}
+
+.search-input {
+  border: none;
+  border-bottom: 1px solid #a9a9a9;
+}
+
+.search-input:focus {
+  outline: none;
+  border-bottom: 1px solid #000;
+}
+
+.search-btn {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #a9a9a9;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+}

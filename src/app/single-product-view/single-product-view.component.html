@@ -1,0 +1,26 @@
+<div class="modal-body p-b">
+  <ng-template #spinner>
+    <div class="spinner-border text-primary" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </ng-template>
+  <div class="flex">
+    <div class="">
+      <img [src]="product.images" class="modal-img" alt="Product Image" />
+    </div>
+    <div class="">
+      <div class="card-details">
+        <h5 class="card-title">{{ product.title }}</h5>
+        <p class="card-description">{{ product.description }}</p>
+        <p class="card-price">{{ product.price | currency : "EUR" }}</p>
+        <ngb-rating
+          [(rate)]="product.rating"
+          [max]="5"
+          [readonly]="true"
+          class="card-rating"
+        ></ngb-rating>
+      </div>
+      <button (click)="addToCart()" class="add_to_cart">Add to cart</button>
+    </div>
+  </div>
+</div>
